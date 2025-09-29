@@ -1,28 +1,32 @@
-DSC07273.jpg
-DSC03407.jpg
-DSC03385.jpg
-DSC00010.jpg
-DSC00588.jpg
-DSC07281.jpg
-DSC07247.jpg
-DSC00948.jpg
-IMAG0181.jpg
-DSC01909.jpg
-DSC02251.jpg
-DSC03159.jpg
-DSC02264.jpg
-DSC02745.jpg
-DSC03264.jpg
-DSC03568.jpg
-DSC04148.jpg
-IMAG0055.jpg
-DSC05500.jpg
-IMAG0184.jpg
-DSC05693.jpg
-DSC05722.jpg
-DSC08176.jpg
-DSC08201.jpg
-DSC09277.jpg
-FSC00010.jpg
-IMAG0076.jpg
-
+--Street
+DSC07273.webp //tram rosso
+DSC03407.webp //tram luce
+DSC02251.webp //vetrina
+DSC08176.webp //barchette
+DSC03385.webp //anziani
+DSC07281.webp //tram certosa
+DSC07247.webp //genitori
+DSC02264.webp //cappellino
+DSC08201.webp //solitario
+DSC01909.webp //cerchio
+--People
+DSC00010.webp //paola
+FSC00010.webp //marco
+DSC03264.webp //aly
+DSC02745.webp //ste
+DSC03159.webp //matth
+--Cars
+DSC04148.webp //f3
+DSC09277.webp //charger
+DSC05722.webp //ferrari bagnata
+DSC05500.webp //ferrari asciutta
+--Others
+DSC05693.webp //mano
+DSC03568.webp //gatta
+DSC00588.webp //enjoy
+DSC00948.webp //luna
+--135mm
+IMAG0076.webp //padiglione
+IMAG0055.webp //coppia
+IMAG0181.webp //uccello
+IMAG0184.webp //lago

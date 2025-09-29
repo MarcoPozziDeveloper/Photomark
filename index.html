@@ -4,30 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
     <meta property="og:title" content="My Showcase" />
-    <meta
-      property="og:description"
-      content="My best shots"
-    />
-    <meta
-      property="og:image"
-      content="./low/DSC03407.jpg"
-    />
+    <meta property="og:description" content="My best shots" />
+    <meta property="og:image" content="./low/DSC03407.jpg" />
     <meta property="og:url" content="https://photomark.it" />
     <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Twitter Card (optional) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Photmark Photo Showcase" />
-    <meta
-      name="twitter:description"
-      content="My bests shots"
-    />
-    <meta
-      name="twitter:image"
-      content="./low/DSC03407.jpg"
-    />
+    <meta name="twitter:description" content="My bests shots" />
+    <meta name="twitter:image" content="./low/DSC03407.jpg" />
 
     <title>My Showcase</title>
     <style>
@@ -46,7 +39,7 @@
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Outfit", sans-serif;
         background-color: var(--bg-color);
         color: var(--text-color);
         line-height: 1.6;
@@ -256,30 +249,40 @@
           transform: rotate(360deg);
         }
       }
+      .line-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        margin: 20px 0;
+        grid-column: 1 / -1;
+      }
+
+      /* Stile della linea */
+      .line-container hr {
+        flex-grow: 1;
+        border: none;
+        height: 1px;
+        background: linear-gradient(to right, transparent, white, transparent);
+      }
+
+      .line-text {
+        padding: 0 15px;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+        position: absolute;
+        background-color: var(--bg-color);
+      }
+
+      
     </style>
   </head>
   <body>
     <header>
       <h1>My Showcase</h1>
       <div class="subtitle">
-        <a
-          href="https://bento.me/photomark"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="currentColor"
-              d="M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"
-            />
-          </svg>
-          bento.me/photomark
-        </a>
         <a
           href="https://instagram.com/photo.mark3"
           target="_blank"
@@ -295,7 +298,6 @@
         </a>
       </div>
     </header>
-
     <div id="gallery" class="bento-grid">
       <div class="loading">Caricamento immagini</div>
     </div>
@@ -330,33 +332,53 @@
             gallery.innerHTML = "";
 
             // Dividi il file in righe e filtra le righe vuote
-            const imageNames = data
+            const lines = data
               .split("\n")
               .map((line) => line.trim())
               .filter((line) => line.length > 0);
 
-            // Crea le card per ogni immagine
-            imageNames.forEach((imageName) => {
-              const card = document.createElement("div");
-              card.className = "image-card";
+            lines.forEach((line) => {
+              if (line.startsWith("--")) {
+                // Creazione componente separatore
+                const lineContainer = document.createElement("div");
+                lineContainer.className = "line-container";
 
-              const img = document.createElement("img");
-              img.src = `./low/${imageName}`;
-              img.alt = imageName;
-              img.loading = "lazy";
+                const hr = document.createElement("hr");
 
-              card.appendChild(img);
+                const span = document.createElement("span");
+                span.className = "line-text maiusc";
+                span.textContent = line.replace(/^--\s*/, ""); // Rimuove i "-- " all’inizio
 
-              // Gestisci il click per mostrare l'immagine a schermo intero
-              card.addEventListener("click", () => {
-                fullscreenImg.src = `./high/${imageName}`;
-                overlay.classList.add("active");
-                document.body.style.overflow = "hidden";
-              });
+                lineContainer.appendChild(hr);
+                lineContainer.appendChild(span);
 
-              gallery.appendChild(card);
+                gallery.appendChild(lineContainer);
+              } else {
+                // Creazione card immagine
+                if (line.includes("//")) {
+                  line =  line.substring(0, line.lastIndexOf("//")).trim();
+                }
+                const card = document.createElement("div");
+                card.className = "image-card";
+
+                const img = document.createElement("img");
+                img.src = `./low/${line}`;
+                img.alt = line;
+                img.loading = "lazy";
+
+                card.appendChild(img);
+
+                card.addEventListener("click", () => {
+                  fullscreenImg.src = `./low/${line}`;
+                  overlay.classList.add("active");
+                  document.body.style.overflow = "hidden";
+                });
+
+                gallery.appendChild(card);
+              }
             });
           })
+
           .catch((error) => {
             console.error("Errore:", error);
             gallery.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
