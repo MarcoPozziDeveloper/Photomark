@@ -6,9 +6,7 @@ DSC08176.webp //barchette
 DSC03385.webp //anziani
 DSC07281.webp //tram certosa
 DSC07247.webp //genitori
-DSC02264.webp //cappellino
 DSC08201.webp //solitario
-DSC01909.webp //cerchio
 --People
 DSC00010.webp //paola
 FSC00010.webp //marco
@@ -22,6 +20,7 @@ DSC05722.webp //ferrari bagnata
 DSC05500.webp //ferrari asciutta
 --Others
 DSC05693.webp //mano
+DSC01909.webp //cerchio
 DSC03568.webp //gatta
 DSC00588.webp //enjoy
 DSC00948.webp //luna
