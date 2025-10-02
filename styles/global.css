@@ -25,7 +25,21 @@ header {
   margin-bottom: 2rem;
   padding: 1rem;
 }
-
+.no-script {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 1.5rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: #3b1f1f;
+  color: #ffbebe;
+  border: 1px solid #5c2b2b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
 h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
@@ -34,8 +48,6 @@ h1 {
   background-clip: text;
   color: transparent;
 }
-
-
 
 .bento-grid {
   display: grid;
@@ -168,7 +180,8 @@ h1 {
   align-items: center;
   height: 50vh;
   font-size: 1.5rem;
-  color: var(--accent-color);
+  color: #fff;
+  width: 100%;
 }
 
 .loading::after {
@@ -188,20 +201,18 @@ h1 {
   }
 }
 .line-container {
-
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   position: relative;
   margin: 30px 0;
-   
+
   grid-column: 1 / -1;
 }
 
 /* Stile della linea */
 .line-container hr {
-  
   flex-grow: 1;
   border: none;
   height: 1px;
@@ -209,7 +220,6 @@ h1 {
 }
 
 .line-text {
-  
   padding: 0 15px;
   color: white;
   font-weight: bold;

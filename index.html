@@ -45,9 +45,7 @@
         "jobTitle": "Photographer",
         "url": "https://photomark.it",
         "image": "https://photomark.it/low/DSC07273.webp",
-        "sameAs": [
-          "https://www.instagram.com/photo.mark3",
-        ]
+        "sameAs": ["https://www.instagram.com/photo.mark3"]
       }
     </script>
 
@@ -84,7 +82,12 @@
         </div>
       </div>
     </div>
-
+    <noscript>
+      <div class="no-script">
+        It seems that JavaScript is disabled in your browser.<br>
+        Without JavaScript, the image gallery cannot be displayed.<br>
+      </div>
+    </noscript>
     <div id="gallery" class="bento-grid">
       <div class="loading">Caricamento immagini</div>
     </div>
@@ -169,7 +172,7 @@
           .catch((error) => {
             console.error("Errore:", error);
             gallery.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
-                        <p>Errore nel caricamento delle immagini: ${error.message}</p>
+                        <p class="loading">Errore nel caricamento delle immagini: ${error.message}</p>
                     </div>`;
           });
 
