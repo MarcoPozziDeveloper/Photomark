@@ -10,7 +10,7 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 32px;
-  border: 1px solid #333;
+ border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 h1 {
@@ -65,7 +65,7 @@ h1 {
   padding: 6px 20px;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .subtitle a:hover {
