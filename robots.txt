@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
-
+Disallow: /images.txt
 Sitemap: https://photomark.it/sitemap.xml
