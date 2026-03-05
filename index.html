@@ -1,36 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
-
     <meta
       name="description"
-      content="Since 2020, I’ve been a photography enthusiast. For me, photography is
-        not about freezing a moment, but about revealing the story behind it."
+      content="Since 2020, I've been a photography enthusiast. For me, photography is not about freezing a moment, but about revealing the story behind it."
     />
     <link rel="canonical" href="https://photomark.it" />
-
     <meta property="og:title" content="Marco Pozzi - Photographer" />
     <meta
       property="og:description"
-      content="Since 2020, I’ve been a photography enthusiast. For me, photography is
-        not about freezing a moment, but about revealing the story behind it."
+      content="Since 2020, I've been a photography enthusiast."
     />
     <meta property="og:image" content="./low/DSC07273.webp" />
     <meta property="og:url" content="https://photomark.it" />
     <meta property="og:type" content="website" />
-    <meta
-      name="keywords"
-      content="
-  fotografo, fotografia artistica, portfolio fotografo, fotografo street, street photography, fotografia di strada, urban photography, ritratti fotografici, portrait photographer, fotografia analogica, film photographer, fotografia pellicola, analog photography, fotografo autodromo, motorsport photographer, fotografia automobilistica, car photography, automotive photographer, foto auto storiche, car meet photography, racing photography
-  "
-    />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Marco Pozzi - Photographer" />
-    <meta name="twitter:description" content="My portfolio" />
     <meta name="twitter:image" content="./low/DSC07273.webp" />
 
     <link href="./styles/font.css" rel="stylesheet" />
@@ -49,48 +37,210 @@
       }
     </script>
 
-    <title>Marco Pozzi - Photographer</title>
+    <title>Marco Pozzi - Fotografo</title>
+
+    <style>
+      .sections-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+        padding: 2rem 0 4rem;
+      }
+      @media (min-width: 640px) {
+        .section-card {
+          aspect-ratio: 3 / 2;
+        }
+
+        .section-card img {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .section-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 4px;
+        background: #111;
+      }
+
+      .section-card img {
+        width: 100%;
+        height: auto; /* ← altezza reale */
+        display: block;
+        transition:
+          transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+          filter 0.6s ease;
+        filter: brightness(0.75);
+      }
+
+      .section-card:hover img {
+        transform: scale(1.05);
+        filter: brightness(0.45);
+      }
+
+      .section-card-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.5rem 1.2rem 1rem;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        color: #fff;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 500;
+        transition: opacity 0.3s ease;
+      }
+
+      .section-card-view {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 0.65rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        white-space: nowrap;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        padding: 0.5rem 1.2rem;
+      }
+
+      .section-card:hover .section-card-view {
+        opacity: 1;
+      }
+
+      #homepage,
+      #section-page {
+        transition:
+          opacity 0.4s ease,
+          transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      #homepage {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      #homepage.fade-out {
+        opacity: 0;
+        transform: translateY(-12px);
+        pointer-events: none;
+      }
+
+      #homepage.hidden {
+        display: none;
+      }
+
+      #section-page {
+        display: none;
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      #section-page.active {
+        display: block;
+      }
+
+      #section-page.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-page-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem 0 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .back-btn {
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: inherit;
+        cursor: pointer;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 0.45rem 1rem;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+        font-family: inherit;
+      }
+
+      .back-btn:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .section-page-title {
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        opacity: 0.6;
+      }
+    </style>
   </head>
   <body>
     <main>
-      <div class="container">
-        <img src="./me.webp" alt="Profile" class="profile-img" />
-
-        <h1>Marco Pozzi</h1>
-        <p class="role">Photography Enthusiast</p>
-
-        <p class="description">
-          Since 2020, I’ve been a photography enthusiast. For me, photography is
-          not about freezing a moment, but about revealing the story behind it.
-          <br />
-          I shoot both digital and film
-        </p>
-        <div class="sub-container">
-          <div class="subtitle">
-            <a
-              href="https://instagram.com/photo.mark3"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
-                <path
-                  fill="currentColor"
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                />
-              </svg>
-              photo.mark3
-            </a>
+      <div id="homepage">
+        <div class="container">
+          <img src="./me.webp" alt="Profile" class="profile-img" />
+          <h1>Marco Pozzi</h1>
+          <p class="role">Fotografo</p>
+          <p class="description">
+            Mi sono avvicinato al mondo della fotografia nel 2020, grazie alla
+            passione per il motorsport.
+            <br />
+            Ho approfondito la materia, imparando da autodidatta e integrando
+            con corsi e workshop.
+            <br />
+            "Io non sono un fotografo, io faccio il fotografo"
+          </p>
+          <div class="sub-container">
+            <div class="subtitle">
+              <a
+                href="https://instagram.com/photo.mark3"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    fill="currentColor"
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+                photo.mark3
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <noscript>
-        <div class="no-script">
-          It seems that JavaScript is disabled in your browser.<br />
-          Without JavaScript, the image gallery cannot be displayed.<br />
+
+        <noscript>
+          <div class="no-script">
+            JavaScript è disabilitato nel tuo browser.<br />
+            Senza JavaScript la galleria non può essere visualizzata.
+          </div>
+        </noscript>
+
+        <div id="sections-grid" class="sections-grid">
+          <div class="loading">Caricamento sezioni…</div>
         </div>
-      </noscript>
-      <div id="gallery" class="bento-grid">
-        <div class="loading">Caricamento immagini</div>
+      </div>
+
+      <div id="section-page">
+        <div class="section-page-header">
+          <button class="back-btn" id="backBtn">← Indietro</button>
+          <span class="section-page-title" id="sectionTitle"></span>
+        </div>
+        <div id="section-gallery" class="bento-grid"></div>
       </div>
 
       <div class="fullscreen-overlay" id="overlay">
@@ -102,106 +252,151 @@
           id="fullscreenImg"
         />
       </div>
+    </main>
 
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const gallery = document.getElementById("gallery");
-          const overlay = document.getElementById("overlay");
-          const fullscreenImg = document.getElementById("fullscreenImg");
-          const closeBtn = document.getElementById("closeBtn");
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sectionsGrid = document.getElementById("sections-grid");
+        const sectionPage = document.getElementById("section-page");
+        const homepage = document.getElementById("homepage");
+        const sectionGallery = document.getElementById("section-gallery");
+        const sectionTitle = document.getElementById("sectionTitle");
+        const backBtn = document.getElementById("backBtn");
+        const overlay = document.getElementById("overlay");
+        const fullscreenImg = document.getElementById("fullscreenImg");
+        const closeBtn = document.getElementById("closeBtn");
 
-          // Carica il file di immagini
-          fetch("./images.txt")
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error("Impossibile caricare il file images.txt");
+        fetch("./images.txt")
+          .then((r) => {
+            if (!r.ok) throw new Error("Impossibile caricare images.txt");
+            return r.text();
+          })
+          .then((data) => {
+            sectionsGrid.innerHTML = "";
+
+            const lines = data
+              .split("\n")
+              .map((l) => l.trim())
+              .filter((l) => l.length > 0);
+
+            const sections = [];
+            let current = null;
+
+            lines.forEach((line) => {
+              if (line.startsWith("--")) {
+                const name = line.replace(/^--\s*/, "");
+                current = { name, images: [] };
+                sections.push(current);
+              } else {
+                const imgFile = line.includes("//")
+                  ? line.substring(0, line.lastIndexOf("//")).trim()
+                  : line;
+                if (current) current.images.push(imgFile);
               }
-              return response.text();
-            })
-            .then((data) => {
-              // Rimuovi il loader
-              gallery.innerHTML = "";
-
-              // Dividi il file in righe e filtra le righe vuote
-              const lines = data
-                .split("\n")
-                .map((line) => line.trim())
-                .filter((line) => line.length > 0);
-
-              lines.forEach((line) => {
-                if (line.startsWith("--")) {
-                  // Creazione componente separatore
-                  const lineContainer = document.createElement("div");
-                  lineContainer.className = "line-container";
-
-                  const hr = document.createElement("hr");
-
-                  const span = document.createElement("span");
-                  span.className = "line-text maiusc";
-                  span.textContent = line.replace(/^--\s*/, ""); // Rimuove i "-- " all’inizio
-
-                  lineContainer.appendChild(hr);
-                  lineContainer.appendChild(span);
-
-                  gallery.appendChild(lineContainer);
-                } else {
-                  // Creazione card immagine
-                  if (line.includes("//")) {
-                    line = line.substring(0, line.lastIndexOf("//")).trim();
-                  }
-                  const card = document.createElement("div");
-                  card.className = "image-card";
-
-                  const img = document.createElement("img");
-                  img.src = `./low/${line}`;
-                  img.alt = line;
-                  img.loading = "lazy";
-
-                  card.appendChild(img);
-
-                  card.addEventListener("click", () => {
-                    fullscreenImg.src = `./low/${line}`;
-                    overlay.classList.add("active");
-                    document.body.style.overflow = "hidden";
-                  });
-
-                  gallery.appendChild(card);
-                }
-              });
-            })
-
-            .catch((error) => {
-              console.error("Errore:", error);
-              gallery.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
-                        <p class="loading">Errore nel caricamento delle immagini: ${error.message}</p>
-                    </div>`;
             });
 
-          // Chiudi l'overlay a schermo intero
-          closeBtn.addEventListener("click", closeOverlay);
-          overlay.addEventListener("click", function (e) {
-            if (e.target === overlay) {
-              closeOverlay();
-            }
+            sections.forEach((section) => {
+              if (!section.images.length) return;
+
+              const coverSrc = `./low/${section.images[0]}`;
+
+              const card = document.createElement("div");
+              card.className = "section-card";
+
+              const img = document.createElement("img");
+              img.src = coverSrc;
+              img.alt = section.name;
+              img.loading = "lazy";
+
+              const label = document.createElement("div");
+              label.className = "section-card-label";
+              label.textContent = section.name;
+
+              const view = document.createElement("div");
+              view.className = "section-card-view";
+              view.textContent = "Vedi galleria";
+
+              card.appendChild(img);
+              card.appendChild(label);
+              card.appendChild(view);
+
+              card.addEventListener("click", () => openSection(section));
+
+              sectionsGrid.appendChild(card);
+            });
+          })
+          .catch((err) => {
+            sectionsGrid.innerHTML = `<p class="loading">Errore: ${err.message}</p>`;
           });
 
-          // Chiudi con il tasto ESC
-          document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" && overlay.classList.contains("active")) {
-              closeOverlay();
-            }
+        function openSection(section) {
+          sectionTitle.textContent = section.name;
+          sectionGallery.innerHTML = "";
+
+          section.images.forEach((imgFile) => {
+            const card = document.createElement("div");
+            card.className = "image-card";
+
+            const img = document.createElement("img");
+            img.src = `./low/${imgFile}`;
+            img.alt = imgFile;
+            img.loading = "lazy";
+
+            card.appendChild(img);
+            card.addEventListener("click", () => {
+              fullscreenImg.src = `./low/${imgFile}`;
+              overlay.classList.add("active");
+              document.body.style.overflow = "hidden";
+            });
+
+            sectionGallery.appendChild(card);
           });
 
-          function closeOverlay() {
-            overlay.classList.remove("active");
-            document.body.style.overflow = "";
-            // Rimuovi il src dopo una breve transizione per evitare di mantenere in memoria immagini grandi
-            setTimeout(() => {
-              fullscreenImg.src = "";
-            }, 300);
-          }
+          homepage.classList.add("fade-out");
+          setTimeout(() => {
+            homepage.classList.add("hidden");
+            homepage.classList.remove("fade-out");
+            sectionPage.classList.add("active");
+            window.scrollTo({ top: 0 });
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => {
+                sectionPage.classList.add("fade-in");
+              }),
+            );
+          }, 380);
+        }
+
+        backBtn.addEventListener("click", () => {
+          sectionPage.classList.remove("fade-in");
+          setTimeout(() => {
+            sectionPage.classList.remove("active");
+            homepage.classList.remove("hidden");
+            window.scrollTo({ top: 0 });
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => {
+                homepage.classList.remove("fade-out");
+              }),
+            );
+          }, 380);
         });
-      </script>
-    </main>
+
+        closeBtn.addEventListener("click", closeOverlay);
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) closeOverlay();
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && overlay.classList.contains("active"))
+            closeOverlay();
+        });
+
+        function closeOverlay() {
+          overlay.classList.remove("active");
+          document.body.style.overflow = "";
+          setTimeout(() => {
+            fullscreenImg.src = "";
+          }, 300);
+        }
+      });
+    </script>
   </body>
 </html>
