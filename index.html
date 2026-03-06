@@ -30,163 +30,16 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Marco Pozzi",
-        "jobTitle": "Photographer",
+        "jobTitle": "Fotografo",
         "url": "https://photomark.it",
-        "image": "https://photomark.it/low/DSC07273.webp",
+        "image": "https://photomark.it/low/DSC02365.webp",
         "sameAs": ["https://www.instagram.com/photo.mark3"]
       }
     </script>
 
     <title>Marco Pozzi - Fotografo</title>
 
-    <style>
-      .sections-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 1.5rem;
-        padding: 2rem 0 4rem;
-      }
-      @media (min-width: 640px) {
-        .section-card {
-          aspect-ratio: 3 / 2;
-        }
-
-        .section-card img {
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-      .section-card {
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-        border-radius: 4px;
-        background: #111;
-      }
-
-      .section-card img {
-        width: 100%;
-        height: auto; /* ← altezza reale */
-        display: block;
-        transition:
-          transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-          filter 0.6s ease;
-        filter: brightness(0.75);
-      }
-
-      .section-card:hover img {
-        transform: scale(1.05);
-        filter: brightness(0.45);
-      }
-
-      .section-card-label {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 1.5rem 1.2rem 1rem;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-        color: #fff;
-        font-size: 0.7rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        font-weight: 500;
-        transition: opacity 0.3s ease;
-      }
-
-      .section-card-view {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #fff;
-        font-size: 0.65rem;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-        white-space: nowrap;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        padding: 0.5rem 1.2rem;
-      }
-
-      .section-card:hover .section-card-view {
-        opacity: 1;
-      }
-
-      #homepage,
-      #section-page {
-        transition:
-          opacity 0.4s ease,
-          transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-
-      #homepage {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      #homepage.fade-out {
-        opacity: 0;
-        transform: translateY(-12px);
-        pointer-events: none;
-      }
-
-      #homepage.hidden {
-        display: none;
-      }
-
-      #section-page {
-        display: none;
-        opacity: 0;
-        transform: translateY(16px);
-      }
-
-      #section-page.active {
-        display: block;
-      }
-
-      #section-page.fade-in {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .section-page-header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1.5rem 0 0.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .back-btn {
-        background: none;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        color: inherit;
-        cursor: pointer;
-        font-size: 0.65rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        padding: 0.45rem 1rem;
-        transition:
-          background 0.2s,
-          border-color 0.2s;
-        font-family: inherit;
-      }
-
-      .back-btn:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.5);
-      }
-
-      .section-page-title {
-        font-size: 0.7rem;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        opacity: 0.6;
-      }
-    </style>
+    <style></style>
   </head>
   <body>
     <main>
@@ -201,7 +54,7 @@
             <br />
             Ho approfondito la materia, imparando da autodidatta e integrando
             con corsi e workshop.
-            <br />
+            <br /><br />
             "Io non sono un fotografo, io faccio il fotografo"
           </p>
           <div class="sub-container">
@@ -226,7 +79,7 @@
         <noscript>
           <div class="no-script">
             JavaScript è disabilitato nel tuo browser.<br />
-            Senza JavaScript la galleria non può essere visualizzata.
+            Senza JavaScript la galleria non può essere visualizzata :/.
           </div>
         </noscript>
 
@@ -237,7 +90,7 @@
 
       <div id="section-page">
         <div class="section-page-header">
-          <button class="back-btn" id="backBtn">← Indietro</button>
+          <a class="back-btn" href="#" id="backBtn">← Indietro</a>
           <span class="section-page-title" id="sectionTitle"></span>
         </div>
         <div id="section-gallery" class="bento-grid"></div>
@@ -266,6 +119,18 @@
         const fullscreenImg = document.getElementById("fullscreenImg");
         const closeBtn = document.getElementById("closeBtn");
 
+        // Converte il nome sezione in uno slug URL-friendly
+        function slugify(name) {
+          return name
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s+/g, "-")
+            .replace(/[^a-z0-9\-]/g, "");
+        }
+
+        let sections = [];
+
         fetch("./images.txt")
           .then((r) => {
             if (!r.ok) throw new Error("Impossibile caricare images.txt");
@@ -279,13 +144,12 @@
               .map((l) => l.trim())
               .filter((l) => l.length > 0);
 
-            const sections = [];
             let current = null;
 
             lines.forEach((line) => {
               if (line.startsWith("--")) {
                 const name = line.replace(/^--\s*/, "");
-                current = { name, images: [] };
+                current = { name, slug: slugify(name), images: [] };
                 sections.push(current);
               } else {
                 const imgFile = line.includes("//")
@@ -300,8 +164,9 @@
 
               const coverSrc = `./low/${section.images[0]}`;
 
-              const card = document.createElement("div");
+              const card = document.createElement("a");
               card.className = "section-card";
+              card.href = `#${section.slug}`;
 
               const img = document.createElement("img");
               img.src = coverSrc;
@@ -320,17 +185,26 @@
               card.appendChild(label);
               card.appendChild(view);
 
-              card.addEventListener("click", () => openSection(section));
-
               sectionsGrid.appendChild(card);
             });
+
+            // Gestisci l'hash iniziale (es. apertura diretta da link)
+            handleRoute();
           })
           .catch((err) => {
             sectionsGrid.innerHTML = `<p class="loading">Errore: ${err.message}</p>`;
           });
 
-        function openSection(section) {
+        // Aggiorna il <title> della pagina
+        function updateTitle(sectionName) {
+          document.title = sectionName
+            ? `${sectionName} — Marco Pozzi`
+            : "Marco Pozzi - Fotografo";
+        }
+
+        function showSection(section) {
           sectionTitle.textContent = section.name;
+          updateTitle(section.name);
           sectionGallery.innerHTML = "";
 
           section.images.forEach((imgFile) => {
@@ -366,7 +240,8 @@
           }, 380);
         }
 
-        backBtn.addEventListener("click", () => {
+        function showHomepage() {
+          updateTitle(null);
           sectionPage.classList.remove("fade-in");
           setTimeout(() => {
             sectionPage.classList.remove("active");
@@ -378,7 +253,30 @@
               }),
             );
           }, 380);
-        });
+        }
+
+        function handleRoute() {
+          const hash = window.location.hash.slice(1); // rimuove il #
+
+          if (!hash) {
+            // Se la sezione page era aperta, chiudila
+            if (sectionPage.classList.contains("active")) {
+              showHomepage();
+            }
+            return;
+          }
+
+          const section = sections.find((s) => s.slug === hash);
+          if (section) {
+            showSection(section);
+          }
+        }
+
+        // Ascolta i cambi di hash (navigazione avanti/indietro del browser)
+        window.addEventListener("hashchange", handleRoute);
+
+        // Il tasto "Indietro" ora punta semplicemente a "#"
+        // già gestito dall'href="#" sul link
 
         closeBtn.addEventListener("click", closeOverlay);
         overlay.addEventListener("click", (e) => {

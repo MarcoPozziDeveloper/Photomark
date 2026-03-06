@@ -11,17 +11,17 @@ DSC07281.webp //tram certosa
 DSC07247.webp //genitori
 DSC08201.webp //solitario
 --People
-DSC02745.webp //ste
-DSC00010.webp //paola
-FSC00010.webp //marco
 DSC03264.webp //aly
+DSC00010.webp //paola
+DSC02745.webp //ste
+FSC00010.webp //marco
 DSC03159.webp //matth
 --Cars
 DSC05500.webp //ferrari asciutta
 DSC04148.webp //f3
 DSC09277.webp //charger
 DSC05722.webp //ferrari bagnata
---Others
+--Misc
 DSC01909.webp //cerchio
 DSC05693.webp //mano
 DSC03568.webp //gatta
