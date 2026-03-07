@@ -240,9 +240,7 @@ h1 {
   white-space: nowrap;
 }
 
-/* ── SECTIONS GRID ──────────────────────────────────────────────── */
 
-/* Mobile: griglia auto-fill compatta (comportamento originale) */
 .sections-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -250,7 +248,7 @@ h1 {
   padding: 2rem 0 4rem;
 }
 
-/* Desktop: colonna singola, card alte e cinematografiche */
+
 @media (min-width: 640px) {
   .sections-grid {
     grid-template-columns: 1fr;
